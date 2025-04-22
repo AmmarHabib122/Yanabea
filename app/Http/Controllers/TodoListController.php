@@ -70,7 +70,7 @@ class TodoListController extends Controller
      */
     public function update(TodoListRequest $request, TodoList $todoList)
     {
-        $this -> authorize('view', $todoList);
+        $this -> authorize('update', $todoList);
         $todoList -> update($request -> validated());
         return $this -> success(
             new TodoListResource($todoList),
@@ -84,7 +84,7 @@ class TodoListController extends Controller
      */
     public function destroy(TodoList $todoList)
     {
-        $this -> authorize('view', $todoList);
+        $this -> authorize('delete', $todoList);
         $todoList -> delete();
         return $this -> success(
             null,

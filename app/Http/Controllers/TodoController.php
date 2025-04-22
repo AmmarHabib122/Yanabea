@@ -69,7 +69,7 @@ class TodoController extends Controller
      */
     public function update(TodoRequest $request, Todo $todo)
     {
-        $this -> authorize('view', $todo);
+        $this -> authorize('update', $todo);
         $todo -> update($request -> validated());
         return $this -> success(
             new TodoResource($todo),
@@ -83,7 +83,7 @@ class TodoController extends Controller
      */
     public function destroy(Todo $todo)
     {
-        $this -> authorize('view', $todo);
+        $this -> authorize('delete', $todo);
         $todo -> delete();
         return $this -> success(
             null,

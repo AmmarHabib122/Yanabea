@@ -18,13 +18,12 @@ class TodoFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = FakerFactory::create('en_US');
         return [
             'todolist_id' => TodoList::factory(),
-            'title'       => $faker -> sentence(3),
-            'description' => $faker -> optional() -> paragraph(),
-            'status'      => $faker -> randomElement(['pending', 'completed', 'in_progress']),
-            'due_date'    => optional($faker -> dateTimeBetween('now', '+1 year')) -> format('Y-m-d'),
+            'title'       => $this -> faker -> sentence(3),
+            'description' => $this -> faker -> optional() -> paragraph(),
+            'status'      => $this -> faker -> randomElement(['pending', 'completed', 'in_progress']),
+            'due_date'    => optional($this -> faker -> dateTimeBetween('now', '+1 year')) -> format('Y-m-d'),
         ];
     }
 }
